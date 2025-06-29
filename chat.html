@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Chat UI</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: white;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background: skyblue;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 70%;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.4;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+}
+
+
+.input-area {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid purple;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline:invert;
+  background: white;
+}
+
+.input-area button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: lime;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.img {
+  vertical-align: top-left;
+  width: 2px;
+  height: 2px;
+  border-radius: 1%;
+}
+
+  </style>
+</head>
+<body>
+
+
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box">
+  
+<img src="" alt="Friend"  class="avatar"> 
+
+    
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="message-input" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+  const input = document.getElementById('message-input');
+  const message = input.value.trim();
+
+  if (message === '') return;
+
+  const chatBox = document.getElementById('chat-box');
+
+  
+  const userBubble = document.createElement('div');
+  userBubble.className = 'message user-message';
+  userBubble.textContent = message;
+  chatBox.appendChild(userBubble);
+
+
+  input.value = '';
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+
+ 
+}
+
+  </script>
+</body>
+</html>
